@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+<meta charset="utf-8">
+<title>Text and buttons</title>
+
+</head>
+<body>
+
+    <input type="text" id="bglFlavs">
+    <input type="text" id="bglCount">
+    <button type="button">Submit Order</button>
+    <div id="next">Once you submit your order, we will begin boxing it up.</div>
+
+</body>
+</html>
