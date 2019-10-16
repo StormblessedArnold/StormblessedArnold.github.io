@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- calculating mile per gallon based on begining and ending miles 
+            and gallons used-->
+        <meta charset="utf-8">
+        <title>MPG</title>
+        <script>
+            /*Input: begining and ending reading from the odometer
+             *Processing: finds miles differnece from begining to ending
+             *  divides the difference by gallons used
+             *Output: displays MPG
+             */
+
+             function calcMilesPG() {
+            // Get Values from user for beging and endingg miles
+            let mb = document.getElementById('milesBegin').value;
+            let me = document.getElementById('milesEnd').value;
+            let ug = document.getElementById('usedGallons').value;
+
+            // Convert what the user typed from text into a number.
+            let b = parseFloat(mb);
+            let e = parseFloat(me);
+            let g = parseFloat(ug);
+
+            // Calculate the MPG
+            let mpg = (e-b)/g;
+
+            // Display the Fahrenheit temperature to the user.
+            document.getElementById('mpgOut').innerHTML = mpg;
+        }
+        </script>
+    </head>
+
+    <body>
+        Begining Miles <input type="text" id="milesBegin"><br/>
+        Ending Miles <input type="text" id="milesEnd"><br/>
+        Gallons Used <input type="text" id="usedGallons"><br/>
+        <button type="button" id="btnName" onclick="calcMilesPG()">Calculate MPG
+        </button>
+        <div id="mpgOut"></div>
+    </body>
+</html>
