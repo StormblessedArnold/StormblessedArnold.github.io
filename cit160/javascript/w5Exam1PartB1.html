@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- calculating rate of change-->
+        <meta charset="utf-8">
+        <title>Rate of Change</title>
+        <script>
+            /*Input: Previous Price (prevPrice), Current Price (currPrice)
+             *Processing: Subtract the previous price from the current price 
+             *   then divide by the previous price. Round results to the fourth decimal place
+             *Output: Rate of Change (rateOfChange)
+             */
+
+             function computeRateOfChange() {
+            // Get Values from user for beging and ending price
+            let pb = document.getElementById('prevPrice').value;
+            let pe = document.getElementById('currPrice').value;
+
+            // Convert what the user typed from text into a number.
+            let b = parseFloat(pb);
+            let e = parseFloat(pe);
+
+            // Calculate the rate of change
+            let rt = (e-b)/b;
+
+            // Round to the fourth decimal place
+            let digits = 4;
+            let multiplier = Math.pow(10,digits);
+            rt = Math.round(rt * multiplier) / multiplier
+
+            // Display the rate of change to the user.
+            document.getElementById('rate').innerHTML = rt;
+        }
+        </script>
+    </head>
+
+    <body>
+        <h1>Rate of Change</h1>
+        Previous Price <input type="text" id="prevPrice"><br/>
+        Current Price <input type="text" id="currPrice"><br/>
+        <button type="button" id="btnName" onclick="computeRateOfChange()">Rate of Change</button><br>
+        <div id="rate"></div>
+    </body>
+</html>

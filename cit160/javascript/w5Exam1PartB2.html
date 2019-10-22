@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- calculating the volume of a torus-->
+        <meta charset="utf-8">
+        <title>Volume of a Torus</title>
+        <script>
+            /*Input: User supplied inner radius (inRad) and outer radius(outRad)
+             *Processing: converts inputs to numbers. 
+             *  Multiply pi squared by the sum of the inner and outer radius
+             *  then multiply by the squared difference of the outer radius from the inner radius
+             *  the results of above are divided by 4 to get the volume of the torus
+             *  round to the 2nd decimal place
+             *Output: The volume of the torus
+             */
+
+             function computeVolume() {
+            // Get Values from user for beging and ending price
+            let ir = document.getElementById('inRad').value;
+            let or = document.getElementById('outRad').value;
+
+            // Convert what the user typed from text into a number.
+            let a = parseFloat(ir);
+            let b = parseFloat(or);
+
+            // Calculate the volume
+            let tv = Math.pow(Math.PI,2) * (a + b) * Math.pow(a - b,2) / 4;
+
+            // Round to the fourth decimal place
+            let digits = 2;
+            let multiplier = Math.pow(10,digits);
+            tv = Math.round(tv * multiplier) / multiplier
+
+            // Display the volume to the user.
+            document.getElementById('volTorus').innerHTML = tv;
+        }
+        </script>
+    </head>
+
+    <body>
+        <h1>Volume of a Torus</h1>
+        Inner Radius <input type="text" id="inRad"><br/>
+        Outer Radius <input type="text" id="outRad"><br/>
+        <button type="button" id="btnName" onclick="computeVolume()">Rate of Change</button><br>
+        <div id="volTorus"></div>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- Helping decide what foot wear to wear-->
+        <meta charset="utf-8">
+        <title>Foot wear selector</title>
+        <script>
+            /* Defining table
+            * Input - user enters observed/expected weather conditions
+            * Processing - script runs through if statements to identify correct foot wear
+            * Output - diplays the best foot wear to the user.
+            */
+            function footWearSel(){
+                let footWear = "shoes";
+                let w = document.getElementById("weather").value.toLowerCase()
+                if (w == "hot"){
+                    footWear = "sandals";
+                }
+                else if (w == "rain"){
+                    footWear = "galoshes";
+                }
+                else if (w == "snow"){
+                    footWear = "boots";
+                }
+                else {
+                    footWear = "shoes"
+                }
+                document.getElementById("outFootWear").innerHTML = "Your feet will be best served to wear " + footWear +"."
+            }
+           
+
+        </script>
+    </head>
+
+    <body>
+        Enter the Weather: <input type="text" id="weather">
+        <button type="button" id="btnName" onclick="footWearSel()"> Find your foot wear.</button></br>
+        <div id="outFootWear"></div>
+    </body>
+</html>
