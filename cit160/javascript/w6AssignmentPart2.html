@@ -1,17 +1,78 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-        <!-- comments here-->
+        <!-- a child math quiz program-->
         <meta charset="utf-8">
-        <title>Insert Title Here</title>
+        <title>Take a Math Quiz</title>
         <script>
+            /*
+            *   Input - User inputs three numbers, one of which is the answer as well as the opperator.
+            *   Processing - The program calculates the math problem and validates the user entered number with the calculation
+            *   Output - displays if the user has the correct answer or not
+            */
+        function checkAnswer(){
+            let firstNum = parseFloat(document.getElementById("inputOne").value);
+            let secondNum = parseFloat(document.getElementById("inputTwo").value);
+            let answerNum = parseFloat(document.getElementById("inputThree").value);
+            let oper = document.getElementById("mathOper").value;
+            let actAns;
+            let ansOut;
+
+            if (oper == "+"){
+                if(answerNum == (actAns = firstNum + secondNum)){
+                    ansOut = "Correct! Good job!"
+                }
+                else {
+                    ansOut = "Incorrect! Try again!"
+                }
+            }
+            else if (oper == "-"){
+                if(answerNum == (actAns = firstNum - secondNum)){
+                    ansOut = "Correct! Good job!"
+                }
+                else {
+                    ansOut = "Incorrect! Try again!"
+                }
+            }
+            else if (oper == "*"){
+                if(answerNum == (actAns = firstNum * secondNum)){
+                    ansOut = "Correct! Good job!"
+                }
+                else {
+                    ansOut = "Incorrect! Try again!"
+                }
+            }
+            else if (oper == "x"){
+                if(answerNum == (actAns = firstNum * secondNum)){
+                    ansOut = "Correct! Good job!"
+                }
+                else {
+                    ansOut = "Incorrect! Try again!"
+                }
+            }
+            else if (oper == "/"){
+                if(answerNum == (actAns = firstNum / secondNum)){
+                    ansOut = "Correct! Good job!"
+                }
+                else {
+                    ansOut = "Incorrect! Try again!"
+                }
+            }
+            document.getElementById("yesNoAns").innerHTML = ansOut;
+        }
+        
         </script>
     </head>
 
     <body>
-        <input type="text" id="txtID">
-        <button type="button" id="btnName" onclick="calledItem">btnMessage
-        </button>
-        <div id="divID"></div>
+        <h1>Test Your Math Skills!</h1>
+        <pre>Enter fist number  (+, -, *, /)   Enter second number   Enter your answer</pre></br>
+        <input type="text" id="inputOne">
+        <input type="text" id="mathOper">
+        <input type="text" id="inputTwo">
+        =
+        <input type="text" id="inputThree">
+        <button type="button" id="btnName" onclick="checkAnswer()">Check Answer</button>
+        <div id="yesNoAns"></div>
     </body>
 </html>
