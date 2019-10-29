@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- calculate the amount of discount depending on the day of week-->
+        <meta charset="utf-8">
+        <title>Insert Title Here</title>
+        <script>
+            /* Defining table
+            *   Input - customer subtotal
+            *   Processing - check the day of week and subtotal amount. Subtract the applicable discount 
+            *       then add the sales tax
+            *   Output - display the new total to the user
+            */
+            function getDiscount(){
+                let dayOfWeek = new Date().getDay();
+                let subTot = parseFloat(document.getElementById("subTotal").value);
+                let multip = Math.pow(10,2);
+                let upTot;
+                    if (subTot >= 50 && (dayOfWeek == 2 || dayOfWeek == 3)){
+                        upTot = subTot * .9 * 1.06
+                    }
+                    else {
+                        upTot = subTot * 1.06
+                    }
+                document.getElementById("finalBal").innerHTML = Math.round(upTot*multip)/multip;
+            }
+        </script>
+    </head>
+
+    <body>
+        Enter Subtotal <input type="text" id="subTotal">
+        <button type="button" id="btnName" onclick="getDiscount()">total
+        </button>
+        <div id="finalBal"></div>
+    </body>
+</html>

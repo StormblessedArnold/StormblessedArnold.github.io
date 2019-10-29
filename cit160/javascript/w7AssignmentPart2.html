@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- figuring out if I can sleep in-->
+        <meta charset="utf-8">
+        <title>Insert Title Here</title>
+        <script>
+            /* Defining Table 
+            *   Input-  pulls date and day of the week from the computer
+            *   Processing- checks to be a weekday and not a holiday
+            *   Output- Display answer if I can sleep in
+            */
+
+            function sleepInCheck(){
+                let now = new Date();
+                let month = now.getMonth();
+                let dayOfMonth = now.getDate();
+                let dayOfWeek = now.getDay();
+                let monthDayCombo = dayOfMonth +'/'+ month
+                let msg = 'Get up!'
+
+                if (dayOfWeek >= 1 && dayOfWeek <6){
+                    if (monthDayCombo == '1/0'||monthDayCombo =='4/6'||monthDayCombo == '25/11'){
+                        msg = 'Sleep in.'
+                    }
+
+                }
+                else {
+                    msg = 'Sleep in.'
+                }
+                document.getElementById("sleepWake").innerHTML = msg
+            }
+        </script>
+    </head>
+
+    <body>
+        <!--<input type="text" id="txtID"> -->
+        <button type="button" id="btnName" onclick="sleepInCheck()">Can I Sleep in?
+        </button>
+        <div id="sleepWake"></div>
+    </body>
+</html>
