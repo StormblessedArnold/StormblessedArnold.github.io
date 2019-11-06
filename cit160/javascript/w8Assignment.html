@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- sum of all odd numbers between 1 and the entered integer-->
+        <meta charset="utf-8">
+        <title>Insert Title Here</title>
+        <script>
+            /*
+            *   Input - User enters an integer
+            *   Process - Computer pulls all the odd numbers between 1 and n then sums them together
+            *   Output - The sum of the odd integers is displayed to the user
+            */
+
+            function sumOddInt(){
+                let n = parseInt(document.getElementById("enteredInt").value);
+                let i = 1;
+                let oddSum = 0;
+
+                while( i <= n ){
+                    if (i%2 != 0){
+                        oddSum += i;
+                        i++
+                    }
+                    else (i++)
+                }
+            document.getElementById("sumOddOut").innerHTML = oddSum
+            }
+
+        </script>
+    </head>
+
+    <body>
+        Please enter a whole number. <input type="text" id="enteredInt">
+        <button type="button" id="btnName" onclick="sumOddInt()">Sum of Odds
+        </button>
+        <div id="sumOddOut"></div>
+    </body>
+</html>
