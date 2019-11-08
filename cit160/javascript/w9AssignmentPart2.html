@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- display the powers of 2 up to 31-->
+        <meta charset="utf-8">
+        <title>Behold the Power of 2</title>
+        <script>
+            /*
+            *   Input   - Hard set to 2
+            *   Process - Calculates 2 to the n power and appends it to the string
+            *   Output  - Displays the string of the powers of 2
+            */
+
+            function powerOf2(){
+                let bse = 2;
+                let n = 0;
+                let temp;
+                let pwrString =0;
+
+                while(n<=31) {
+                    temp = Math.pow(bse,n);
+                    if (n<31) {
+                        pwrString = pwrString + temp + ', ';
+                    }
+                    else {
+                        pwrString = pwrString + temp;
+                    }
+                    n++
+                }
+            document.getElementById('disPowerOf2').innerHTML = pwrString
+
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <h1> Watch as the power of 2 shows its increase</h1>
+        <button type="button" id="btnName" onclick="powerOf2()">Behold the Power of 2
+        </button>
+        <div id="disPowerOf2"></div>
+    </body>
+</html>

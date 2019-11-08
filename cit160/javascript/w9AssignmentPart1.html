@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- Display the multiplication table for 5x1 -> 5x12-->
+        <meta charset="utf-8">
+        <title>multiplication of 5</title>
+        <script>
+            /*
+            *   Input - harset to 5
+            *   Process - Loops the integer from 1 to 12 using those integers to display the multiplication table for 5
+            *   Output  - displays the multiplication table and the answer
+            */
+            function multip5() {
+                let base = 5;
+                let tbl
+                let tblc = ""
+                let i = 1
+                do {
+                    tbl = base +' X '+ i + ' = '+ (base * i) ;
+                    i++;
+                    tblc += (tbl + '<br>');
+                    
+                } while (i<=12);
+                document.getElementById('tblOut').innerHTML = tblc
+            }
+        </script>
+    </head>
+
+    <body>
+        <button type="button" id="btnName" onclick="multip5()"> Multiplication of 5</button>
+        <div id='tblOut'></div>
+    </body>
+</html>
