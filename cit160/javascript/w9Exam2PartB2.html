@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <script>
+        /* Input: three user enterd numbers, start, end, divisor
+         * Processing: finds all numbers between the start and end numbers that evenly divisible by the divisor
+         * Output: a string with all qualifying numbers with a space between
+         */
+
+         function evenCalcsBetween(){
+             let begin = parseInt(document.getElementById("start").value)
+             let fin = parseInt(document.getElementById("end").value)
+             let denom = parseInt(document.getElementById("divisor").value)
+             let result = ""
+             do{
+                 if(begin%denom == 0){
+                     result += begin +" "
+                 }
+                 ++begin
+             }
+             while(begin <= fin)
+             document.getElementById("output").innerHTML = result;
+         }
+    </script>
+</head>
+
+<body>
+    Start: <input type="text" id="start" size="5"><br>
+    End: <input type="text" id="end" size="5"><br>
+    Divisor: <input type="text" id="divisor" size="5"><br>
+    <button type="button" onclick="evenCalcsBetween()">Click</button>
+    <div id="output"></div>
+</body>
+
+</html>
