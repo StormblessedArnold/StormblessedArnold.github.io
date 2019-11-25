@@ -16,11 +16,11 @@
             let tempF = parseFloat(document.getElementById("temp").value);
             let speed = parseFloat(document.getElementById("windS").value);
             let multiplier = Math.pow(10,2);
-            let windChillOutput = Math.round(windchill(tempF, speed) * multiplier) /multiplier;
+            let windChillOutput = Math.round(windChill(tempF, speed) * multiplier) /multiplier;
             document.getElementById('outputResult').innerHTML = windChillOutput
 
         }
-        function windchill(tempF, speed) {
+        function windChill(tempF, speed) {
             return (35.74 + (0.6215 * tempF) - (35.75 * Math.pow(speed, .16)) + (0.4275 * (tempF * Math.pow(speed, .16))))
         }
     </script>

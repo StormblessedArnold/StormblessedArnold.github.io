@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <!-- Display the -->
+    <meta charset="utf-8">
+    <title>Future Value</title>
+    <script>
+        /*
+        *   Input - user inputs the amount invested, annual rate, number of years and the number of periods per year
+        *   Process - uses the user entered values to calculate the future value
+        *   Output  - outputs the results to the user for the future value
+        */
+
+        function doFV() {
+            let prin = parseFloat(document.getElementById("prinPal").value);
+            let ar = parseFloat(document.getElementById("annRate").value);
+            let yrs = parseInt(document.getElementById("numYear").value);
+            let ppy = parseInt(document.getElementById("perYear").value);
+            let multiplier = Math.pow(10,2);
+            let fv = Math.round(computeFutureValue(prin, ar, yrs, ppy) * multiplier) /multiplier;
+            document.getElementById('outputFV').innerHTML = '$' +fv.toFixed(2)
+
+        }
+        function computeFutureValue(principal, annualRate, years, periodsPerYear) {
+            return principal * Math.pow((1 + annualRate / periodsPerYear),(periodsPerYear * years))
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Investment Calculator</h1>
+    Amount invested (principal) <input type="text" id="prinPal" size="5"><br>
+    Annual rate (example: .08) <input type="text" id="annRate" size="5"><br>
+    Number of year <input type="text" id="numYear" size="5"><br>
+    Periods per year <input type="text" id="perYear" size="5"><br>
+    <button type="button" id="btnName" onclick="doFV()"> Compute future value</button>
+    <div id='outputFV'></div>
+</body>
+
+</html>

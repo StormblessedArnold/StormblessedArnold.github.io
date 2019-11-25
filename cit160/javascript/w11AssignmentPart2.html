@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <!-- Display the -->
+    <meta charset="utf-8">
+    <title>Loan Calculator</title>
+    <script>
+        /*
+        *   Input - 
+        *   Process - 
+        *   Output  - 
+        */
+
+
+        function doPayment() {
+            let prin = parseFloat(document.getElementById("prinPal").value);
+            let ar = parseFloat(document.getElementById("annRate").value);
+            let yrs = parseInt(document.getElementById("numYear").value);
+            let ppy = parseInt(document.getElementById("perYear").value);
+            let multiplier = Math.pow(10, 2);
+            let pmt = Math.round(computePayment(prin, ar, yrs, ppy) * multiplier) / multiplier;
+            document.getElementById('outputPay').innerHTML = '$' + pmt
+
+        }
+        function computePayment(principal, annualRate, years, periodsPerYear) {
+            return principal * (annualRate / periodsPerYear) /
+                (1 - Math.pow(1 + (annualRate / periodsPerYear), (-(periodsPerYear * years))))
+
+        }
+        function doBalance() {
+            let prin = parseFloat(document.getElementById("prinPal").value);
+            let ar = parseFloat(document.getElementById("annRate").value);
+            let yrs = parseInt(document.getElementById("numYear").value);
+            let ppy = parseInt(document.getElementById("perYear").value);
+            let ptd = parseInt(document.getElementById("pmtToDate").value);
+            let multiplier = Math.pow(10, 2);
+            let bal = Math.round(computeBalance(prin, ar, yrs, ppy, ptd) * multiplier) / multiplier;
+            document.getElementById('outputBal').innerHTML = '$' + bal
+
+        }
+        function computeBalance(principal, annualRate, years, periodsPerYear, numberOfPaymentPaidToDate) {
+            let a = principal
+            let r = annualRate / periodsPerYear
+            let d = numberOfPaymentPaidToDate
+            let p = Math.round(computePayment(principal, annualRate, years, periodsPerYear) * Math.pow(10, 2)) / Math.pow(10, 2);
+            return a * Math.pow((1 + r), d) - p * (Math.pow((1 + r), d) - 1) / r
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Investment Calculator</h1>
+    Amount borrowed (principal) <input type="text" id="prinPal" size="5"><br>
+    Annual interest rate (example: .08) <input type="text" id="annRate" size="5"><br>
+    Number of year <input type="text" id="numYear" size="5"><br>
+    Periods per year <input type="text" id="perYear" size="5"><br>
+    <button type="button" id="btnName" onclick="doPayment()"> Compute payment</button>
+    <div id='outputPay'></div>
+    Number of pyments paid to date <input type="text" id="pmtToDate" size="5"><br>
+    <button type="button" id="btnName" onclick="doBalance()"> Compute payoff amount</button>
+    <div id='outputBal'></div>
+</body>
+
+</html>
