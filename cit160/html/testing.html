@@ -1,37 +1,58 @@
 <!DOCTYPE HTML>
 <html lang="en-us">
+
 <head>
-<meta charset="utf-8">
-<title> Wind Chill Factor </title>
-
-<script>
-/* Input: An integer
-* Processing: 
-* Output: 
-*/
-function doInputOutput() {
-let tempF = parseInt(document.getElementById('tempInputBox').value);
-let speed = parseInt(document.getElementById('windspeedInputBox').value);
-
-let result =  windchill (tempF, speed);
-document.getElementById('outputDiv').innerHTML = result;
-}
-
- 
-
-function  windchill (tempF, speed) {
-    return 35.74 + (0.6215 * tempF) - (35.75 * Math.pow(speed,0.16)) + (0.4275 *tempF*Math.pow(speed,0.16));
-
-}
+    <meta charset="utf-8">
+    <title>Loan Calculator</title>
+    <script>
+        function doPayment() {
+            var principal = parseFloat(document.getElementById('principal').value);
+            var annualRate = parseFloat(document.getElementById('annualRate').value);
+            var numYears = parseFloat(document.getElementById('numYears').value);
+            var pmtsYear = parseFloat(document.getElementById('pmtsYear').value);
+            var pmtAmount = parseFloat(computePayment(principal, annualRate, numYears, pmtsYear));
+            // var payoffAmount = parseFloat(computeBalance(principal, annualRate, numYears, pmtsYear));
+            document.getElementById("result").innerHTML = "$" + pmtAmount;
+        }
 
 
-</script>
+        function computePayment(principal, annualRate, numYears, pmtsYear) {
+            var paymentAmount = principal * (annualRate / pmtsYear) / (1 - Math.pow(1 + (annualRate / pmtsYear), -(numYears * pmtsYear)));
+            return paymentAmount.toFixed(2);
+        }
+
+        function doBalance() {
+            var principal = parseFloat(document.getElementById('principal').value);
+            var annualRate = parseFloat(document.getElementById('annualRate').value);
+            var numYears = parseFloat(document.getElementById('numYears').value);
+            var pmtsYear = parseFloat(document.getElementById('pmtsYear').value);
+            var pmtsToDate = parseFloat(document.getElementById('pmtsToDate').value);
+            //var pmtAmount = parseFloat(computePayment(principal, annualRate, numYears, pmtsYear));
+            var payoffAmount = parseFloat(computeBalance(principal, annualRate, numYears, pmtsToDate, pmtsYear));
+            document.getElementById("result").innerHTML = "$" + payoffAmount;
+        }
+
+        function computeBalance(principal, annualRate, numYears, pmtsToDate, pmtsYear) {
+            var monthlypmtAmount = parseFloat(computePayment(principal, annualRate, numYears, pmtsYear));
+            var balanceOne = principal * Math.pow(1 + annualRate / pmtsYear, pmtsToDate);
+            var balanceTwo = monthlypmtAmount * (Math.pow(1 + (annualRate / pmtsYear), pmtsToDate) - 1) / (annualRate / pmtsYear);
+            var payoffBalance = balanceOne - balanceTwo;
+            return payoffBalance.toFixed(2);
+        }
+    </script>
 </head>
 
-<body> 
-Please enter temperature: <input type="text" id="tempInputBox"> <br> 
-Please enter wind speed: <input type="text" id="windspeedInputBox"> <br> 
-<button type="button" onclick="doInputOutput()">Wind Chill Factor?</button>
-<div id="outputDiv"></div>
-</body> 
+<body>
+    <h2>Loan Calculator</h2>
+    Amount borrowed (principal) <input id="principal" type="text"><br>
+    Annual interest rate (example .065) <input id="annualRate" type="text"><br>
+    Number of years <input id="numYears" type="text"><br>
+    Payments per year <input id="pmtsYear" type="text"><br>
+    <button type="button" onclick="doPayment()">Compute payment</button>
+    Number of payments paid to date <input id="pmtsToDate" type="text"><br>
+    <button type="button" onclick="doBalance()">Compute payoff amount</button>
+    <div id="result"></div>
+
+</body>
+
 </html>

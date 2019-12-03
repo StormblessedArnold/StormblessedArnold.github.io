@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <!-- Display the -->
+    <meta charset="utf-8">
+    <title>Find Middle</title>
+    <script>
+        /*
+        *   Input - 
+        *   Process - 
+        *   Output  - 
+        */
+        function fillArray() {
+            var list = new Array()
+            var promptBx = prompt("Enter list values one at a time. After all are enterd a blank");
+
+            do {
+                list.push(parseFloat(promptBx))
+                promptBx = prompt("Enter list values one at a time. After all are enterd click cancel");
+            }
+            while (promptBx != null)
+            var value = getMiddle(list)
+            document.getElementById('outputMid').innerHTML = value
+        }
+
+        function getMiddle(list) {
+            var first, second;
+            if (list.length % 2 != 0) {
+                return list[Math.ceil(list.length / 2)-1]
+            }
+            else{
+                first = list[Math.floor(list.length / 2)-1];
+                second = list[Math.ceil(list.length / 2)];
+                return (first + second) / 2
+            }
+            
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Enter list values and find the middle</h1>
+    <pre>   Enter each number to be added to the list in the 
+    pop up box one at a time and click ok. After all numbers have 
+    entered click cancel.</pre> <br>
+    <button type="button" id="btnName" onclick="fillArray()">Click to run</button>
+    <div id='outputMid'></div>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <!-- Display the -->
+    <meta charset="utf-8">
+    <title>add ends</title>
+    <script>
+        /*
+        *   Input - 
+        *   Process - 
+        *   Output  - 
+        */
+        function callAddEnds() {
+            var list = new Array()
+            var promptBx = prompt("Enter list values one at a time. After all are enterd a blank");
+
+            do {
+                list.push(parseFloat(promptBx))
+                promptBx = prompt("Enter list values one at a time. After all are enterd click cancel");
+            }
+            while (promptBx != null)
+            var value = addEnds(list)
+            document.getElementById('outputTot').innerHTML = value
+        }
+
+        function addEnds(list) {
+
+            let first = list[0];
+            let last = list[list.length - 1]
+            let tot = first + last
+            return tot
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Enter list values and sum the ends</h1>
+    <pre>   Enter each number to be added to the list in the 
+    pop up box one at a time and click ok. After all numbers have 
+    entered click cancel.</pre> <br>
+    <button type="button" id="btnName" onclick="callAddEnds()">Click to run</button>
+    <div id='outputTot'></div>
+</body>
+
+</html>
